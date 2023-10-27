@@ -7,10 +7,14 @@ export default class View {
     #fileUploadWrapper = document.getElementById('fileUploadWrapper')
     #elapsed = document.getElementById('elapsed')
 
+    /** @type {HTMLCanvasElement} */
     #canvas = document.getElementById('preview-144p')
 
     constructor() {
         this.configureBtnUploadClick()
+    }
+    getCanvas() {
+        return this.#canvas.transferControlToOffscreen()
     }
     parseBytesIntoMBAndGB(bytes) {
         const mb = bytes / (1024 * 1024)
